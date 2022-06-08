@@ -14,13 +14,14 @@ const Stories = () => {
   const getStories = () => {
     fetchStories()
       .then(data => {
-        console.log(data.results)
-        setTopStory(data.results.shift())
-        setIsLoading(false)
-        return setStories(data.results)
+        return (
+          setTopStory(data.results.shift()),
+          setStories(data.results),
+          setIsLoading(false)
+        )
       })
       .catch(err => 
-        setError('Oops, soemthing went wrong. Please try aain later.')
+        setError('Oops, something went wrong. Please try again later.')
       )
   }
 
@@ -28,16 +29,37 @@ const Stories = () => {
     getStories()
   }, [])
 
-  const storiesList = stories.map(story => {
-    console.log(story)
-    return(
-      <div>
-        <p>{story.title}</p>
-      </div>
-    )
-  })
+  let storiesList;
+
+  if(!stories.length) {
+    storiesList = <p>{error}</p>
+  } else {
+    storiesList = stories.map(story => {
+      return (
+        <section>
+          <div className='storiesList-container'>
+            <div className='storiesList-info-container'>
+              <h3 className='story-title'>{story.title}</h3>
+              <p className='story-abstract'>{story.abstract}</p>
+            </div>
+            {!story.multimedia ? (
+              <ReactLoading 
+                type='bubbles'
+                color='gray'
+                width={'10%'}
+                height={'10%'}
+              />
+            ) : <img className='story-img' alt={story.multimedia[2].caption} src={story.multimedia[2].url}/>}
+          </div>
+          <GrayLine />
+        </section>
+      )
+    })
+  }
+
   return (
-    <div>
+    <section>
+      {error}
       {isLoading ? (
         <ReactLoading 
           type='bubbles'
@@ -47,14 +69,12 @@ const Stories = () => {
         />
       ) : (
         <div className='top-story-container'>
-          <h1 className='top-story-title'>Top Story</h1>
+          <h2 className='top-story-title'>Top Story</h2>
           <TopStory topStory={topStory}/>
           <GrayLine />
+          {storiesList}
         </div>)}
-      
-      {error}
-      {storiesList}
-    </div>
+    </section>
   )
 }
 
