@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { fetchStories } from '../../apiCalls';
+import TopStory from '../TopStory/TopStory';
 import './Stories.css';
 
 const Stories = () => {
   const [stories, setStories] = useState([]);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
+  const [topStory, setTopStory] = useState({});
 
   const getStories = () => {
     fetchStories()
       .then(data => {
         console.log(data.results)
-        return setStories(data.results)
+        return (
+          setTopStory(data.results.shift()),
+          setStories(data.results)
+        )
       })
       .catch(err => 
         setError('Oops, soemthing went wrong. Please try aain later.')
@@ -31,7 +36,8 @@ const Stories = () => {
   })
   return (
     <div>
-      <h2>Stories go here</h2>
+      <TopStory topStory={topStory}/>
+      {error}
       {storiesList}
     </div>
   )
