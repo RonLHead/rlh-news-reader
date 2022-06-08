@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactLoading from 'react-loading';
 import { fetchStories } from '../../apiCalls';
 import TopStory from '../TopStory/TopStory';
+import GrayLine from '../GrayLine/GrayLine';
 import './Stories.css';
 
 const Stories = () => {
@@ -44,7 +45,12 @@ const Stories = () => {
           width={'10%'}
           height={'10%'}
         />
-      ) : <TopStory topStory={topStory}/>}
+      ) : (
+        <div className='top-story-container'>
+          <h1 className='top-story-title'>Top Story</h1>
+          <TopStory topStory={topStory}/>
+          <GrayLine />
+        </div>)}
       
       {error}
       {storiesList}
