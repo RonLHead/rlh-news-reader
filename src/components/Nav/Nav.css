@@ -11,6 +11,10 @@
   margin-left: 1%;
 }
 
-.Nav-text {
+.home-text {
   margin-right: 5vw;
+}
+
+.home-text:hover, .saved-stories-text:hover {
+  color: #00FFCE;
 }
