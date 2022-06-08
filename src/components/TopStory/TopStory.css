@@ -1,0 +1,25 @@
+.TopStory-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1%;
+}
+
+.TopStory-img {
+  width: 30%;
+  height: 20%;
+  border-radius: 10px;
+  margin-bottom: 1%;
+}
+
+.TopStory-info-contianer {
+  margin-left: 2%;
+}
+
+.TopStory-title {
+  font-size: 30px;
+  margin-top: 0;
+}
+
+.TopStory-abstract {
+  font-size: 25px;
+}
