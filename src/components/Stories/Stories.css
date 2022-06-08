@@ -8,3 +8,27 @@
 .top-story-container {
   margin-bottom: 2%;
 }
+
+.storiesList-container {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.storiesList-info-container {
+  width: 80%
+}
+
+.story-title {
+  font-size: 25px;
+}
+
+.story-abstract {
+  font-size: 20px;
+}
+
+.story-img {
+  border-radius: 8px;
+}
