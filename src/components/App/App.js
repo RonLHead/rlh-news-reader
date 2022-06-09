@@ -7,6 +7,7 @@ import Stories from '../Stories/Stories';
 import { NavLink } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import SingleStory from '../SingleStory/SingleStory';
+import TopStoryDetails from '../TopStoryDetails/TopStoryDetails';
 import './App.css';
 
 const App = () => {
@@ -51,11 +52,11 @@ const App = () => {
           height={'10%'}
         />
       ) : (
-        
-      <Routes>
-        <Route index element={<Stories stories={stories} error={error} topStory={topStory} isLoading={isLoading}/>} />
-        <Route path=':id' element={<SingleStory story={stories}/>} />
-      </Routes>
+        <Routes>
+          <Route index element={<Stories stories={stories} error={error} topStory={topStory} isLoading={isLoading}/>} />
+          <Route path=':id' element={<SingleStory story={stories} />} />
+          <Route path='current_top_story' element={<TopStoryDetails topStory={topStory} />} />
+        </Routes>
       )}
     </main>
   );
