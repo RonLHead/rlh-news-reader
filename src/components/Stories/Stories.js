@@ -1,56 +1,34 @@
-import React, { useEffect, useState } from 'react';
 import ReactLoading from 'react-loading';
-import { fetchStories } from '../../apiCalls';
+import { Link } from 'react-router-dom';
 import TopStory from '../TopStory/TopStory';
 import GrayLine from '../GrayLine/GrayLine';
 import './Stories.css';
 
-const Stories = () => {
-  const [stories, setStories] = useState([]);
-  const [error, setError] = useState('');
-  const [topStory, setTopStory] = useState({});
-  const [isLoading, setIsLoading] = useState(true)
-
-  const getStories = () => {
-    fetchStories()
-      .then(data => {
-        return (
-          setTopStory(data.results.shift()),
-          setStories(data.results),
-          setIsLoading(false)
-        )
-      })
-      .catch(err => 
-        setError('Oops, something went wrong. Please try again later.')
-      )
-  }
-
-  useEffect(() => {
-    getStories()
-  }, [])
-
+const Stories = (props) => {
   let storiesList;
 
-  if(!stories.length) {
-    storiesList = <p>{error}</p>
+  if(!props.stories.length) {
+    storiesList = <p>{props.error}</p>
   } else {
-    storiesList = stories.map(story => {
+    storiesList = props.stories.map((story, i)=> {
       return (
-        <section>
-          <div className='storiesList-container'>
-            <div className='storiesList-info-container'>
-              <h3 className='story-title'>{story.title}</h3>
-              <p className='story-abstract'>{story.abstract}</p>
+        <section key={i} id={i}>
+            <Link to={`/${i}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <div className='storiesList-container'>
+              <div className='storiesList-info-container'>
+                <h3 className='story-title'>{story.title}</h3>
+                <p className='story-abstract'>{story.abstract}</p>
+              </div>
+              {!story.multimedia ? (
+                <ReactLoading 
+                  type='bubbles'
+                  color='gray'
+                  width={'10%'}
+                  height={'10%'}
+                />
+              ) : <img className='story-img' alt={story.multimedia[2].caption} src={story.multimedia[2].url}/>}
             </div>
-            {!story.multimedia ? (
-              <ReactLoading 
-                type='bubbles'
-                color='gray'
-                width={'10%'}
-                height={'10%'}
-              />
-            ) : <img className='story-img' alt={story.multimedia[2].caption} src={story.multimedia[2].url}/>}
-          </div>
+            </Link>
           <GrayLine />
         </section>
       )
@@ -59,8 +37,8 @@ const Stories = () => {
 
   return (
     <section>
-      {error}
-      {isLoading ? (
+      {props.error}
+      {props.isLoading ? (
         <ReactLoading 
           type='bubbles'
           color='gray'
@@ -70,11 +48,12 @@ const Stories = () => {
       ) : (
         <div className='top-story-container'>
           <h2 className='top-story-title'>Top Story</h2>
-          <TopStory topStory={topStory}/>
+          <TopStory topStory={props.topStory}/>
           <GrayLine />
-          {storiesList}
-        </div>)}
-    </section>
+            {storiesList}
+        </div>
+      )}
+      </section>
   )
 }
 
