@@ -32,3 +32,28 @@
 .story-img {
   border-radius: 8px;
 }
+
+.SingleStory-container {
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SingleStory-title {
+  font-size: 38px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.SingleStory-img {
+  border-radius: 15px;
+}
+
+.SingleStory-abstract {
+  font-size: 28px;
+}
+
+.SingleStory-title, .SingleStory-img, .SingleStory-abstract {
+  width: 90vw;
+}
