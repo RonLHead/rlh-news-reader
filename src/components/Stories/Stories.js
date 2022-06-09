@@ -18,6 +18,7 @@ const Stories = (props) => {
               <div className='storiesList-info-container'>
                 <h3 className='story-title'>{story.title}</h3>
                 <p className='story-abstract'>{story.abstract}</p>
+                <p>{story.byline}</p>
               </div>
               {!story.multimedia ? (
                 <ReactLoading 
