@@ -2,18 +2,22 @@ import ReactLoading from 'react-loading';
 import { Link } from 'react-router-dom';
 import TopStory from '../TopStory/TopStory';
 import GrayLine from '../GrayLine/GrayLine';
+import Error from '../Error/Error';
 import './Stories.css';
 
 const Stories = (props) => {
   let storiesList;
-
+  console.log("Top Story", props.topStory.multimedia)
   if(!props.stories.length) {
-    storiesList = <p>{props.error}</p>
+    storiesList = <h3>{props.error}</h3>
   } else {
-    storiesList = props.stories.map((story, i)=> {
+    storiesList = props.stories.map((story, i)=> {  
       return (
         <section key={i} id={i}>
-            <Link to={`/${i}`} style={{ textDecoration: 'none', color: 'black' }}>
+          {!story.multimedia ? (
+            <Error />
+          ) : (
+            <Link to={`${story.section}/${i}`} style={{ textDecoration: 'none', color: 'black' }}>
             <div className='storiesList-container'>
               <div className='storiesList-info-container'>
                 <h3 className='story-title'>{story.title}</h3>
@@ -30,8 +34,10 @@ const Stories = (props) => {
               ) : <img className='story-img' alt={story.multimedia[2].caption} src={story.multimedia[2].url}/>}
             </div>
             </Link>
-          <GrayLine />
-        </section>
+
+          )}
+            <GrayLine />
+          </section>
       )
     })
   }
@@ -48,10 +54,14 @@ const Stories = (props) => {
         />
       ) : (
         <div className='top-story-container'>
-          <Link to='current_top_story' style={{ textDecoration: 'none', color: 'black' }}>
-            <h2 className='top-story-title'>Top Story</h2>
+          <h2 className='top-story-title'>Top Story</h2>
+          {!props.topStory.multimedia ? (
             <TopStory topStory={props.topStory}/>
-          </Link>
+          ) : (
+            <Link to={`${props.section}/current_top_story`} style={{ textDecoration: 'none', color: 'black' }}>
+              <TopStory topStory={props.topStory}/>
+            </Link>
+          )}
           <GrayLine />
           {storiesList}
         </div>
