@@ -57,3 +57,17 @@
 .SingleStory-title, .SingleStory-img, .SingleStory-abstract {
   width: 90vw;
 }
+
+.link-text {
+  text-decoration: none;
+}
+
+.back-link {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.back-link:hover, .link-text:hover {
+  color: #19B697;
+}
