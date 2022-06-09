@@ -31,6 +31,11 @@
 
 .story-img {
   border-radius: 8px;
+  float: left;
+  width:  200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .SingleStory-container {
