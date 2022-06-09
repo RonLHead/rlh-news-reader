@@ -1,6 +1,8 @@
+import './Error.css';
+
 const Error = () => {
   return (
-    <p>Unable to load. Please try again later.</p>
+    <p className="error-text">Unable to load. Please try again later.</p>
   )
 }
 
