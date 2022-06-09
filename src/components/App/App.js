@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { fetchStories } from '../../apiCalls';
+import ReactLoading from 'react-loading';
 
+import { fetchStories } from '../../apiCalls';
 import Nav from '../Nav/Nav';
 import Stories from '../Stories/Stories';
 import { NavLink } from 'react-router-dom';
@@ -17,12 +18,9 @@ const App = () => {
   const getStories = () => {
     fetchStories()
       .then(data => {
-        return (
-          setTopStory(data.results.shift()),
-          setStories(data.results),
-
-          setIsLoading(false)
-        )
+        setTopStory(data.results.shift())
+        setStories(data.results)
+        setIsLoading(false)  
       })
       .catch(err => 
         setError('Oops, something went wrong. Please try again later.')
@@ -33,6 +31,10 @@ const App = () => {
     getStories()
   }, [])
 
+  useEffect(() => {
+    console.log(stories)
+  }, [stories])
+
   return (
     <main>
       <header className='App-header'>
@@ -41,11 +43,20 @@ const App = () => {
         </NavLink>
       </header>
       <Nav />
+      {isLoading ? (
+        <ReactLoading 
+          type='bubbles'
+          color='gray'
+          width={'10%'}
+          height={'10%'}
+        />
+      ) : (
+        
       <Routes>
         <Route index element={<Stories stories={stories} error={error} topStory={topStory} isLoading={isLoading}/>} />
         <Route path=':id' element={<SingleStory story={stories}/>} />
-      
       </Routes>
+      )}
     </main>
   );
 }
