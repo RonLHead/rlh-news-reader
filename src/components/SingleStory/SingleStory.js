@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 const SingleStory = (props) => {
   const { id } = useParams();
   const story = props.story[id]
-  console.log(story)
+  console.log(props.story)
 
   let storyDetails;
 
@@ -11,9 +11,15 @@ const SingleStory = (props) => {
     storyDetails = <p>Loading...</p>
   } else {
     storyDetails = (
-      <div>
-        <h1>{story.title}</h1>
-        <p>Story details</p>
+      <div className="SingleStory-container">
+        <h1 className="SingleStory-title">{story.title}</h1>
+        <h2>{story.byline}</h2>
+        <p>{story.published_date}</p>
+        <a href={story.url}>
+          <img className='SingleStory-img' alt={story.multimedia[0].caption} src={story.multimedia[0].url}/>
+        </a>
+        <p>{story.multimedia[0].caption}</p>
+        <p className="SingleStory-abstract">{story.abstract} To read the rest of this article, click <a href={story.url}>here</a></p>
       </div>
     )
   }
