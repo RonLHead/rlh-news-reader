@@ -13,14 +13,21 @@ const App = () => {
   const [stories, setStories] = useState([]);
   const [error, setError] = useState('');
   const [topStory, setTopStory] = useState({});
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
+  const [section, setSection] = useState('')
 
-  const getStories = () => {
-    fetchStories()
+  const getStories = (section) => {
+    if(!section) {
+      section='home'
+    }
+    fetchStories(section)
       .then(data => {
+        console.log(data.results)
         setTopStory(data.results.shift())
         setStories(data.results)
-        setIsLoading(false)  
+        setIsLoading(false)
+        console.log(topStory)
+        console.log(stories)
       })
       .catch(err => 
         setError('Oops, something went wrong. Please try again later.')
@@ -28,8 +35,13 @@ const App = () => {
   }
 
   useEffect(() => {
-    getStories()
+    getStories(section)
   }, [])
+
+  const submitSection = (section) => {
+    setSection(section)
+    getStories(section)
+  }
 
   return (
     <main>
@@ -38,7 +50,7 @@ const App = () => {
           <h1 className='header-title'>My News Reader</h1>
         </NavLink>
       </header>
-      <Nav />
+      <Nav submitSection={submitSection}/>
       {isLoading ? (
         <ReactLoading 
           type='bubbles'
@@ -49,8 +61,8 @@ const App = () => {
       ) : (
         <Routes>
           <Route index element={<Stories stories={stories} error={error} topStory={topStory} isLoading={isLoading}/>} />
-          <Route path=':id' element={<SingleStory story={stories} />} />
-          <Route path='current_top_story' element={<TopStoryDetails topStory={topStory} />} />
+          <Route path=':section/:id' element={<SingleStory story={stories} />} />
+          <Route path=':section/current_top_story' element={<TopStoryDetails topStory={topStory} />} />
         </Routes>
       )}
     </main>
