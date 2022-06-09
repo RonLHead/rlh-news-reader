@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ReactLoading from 'react-loading';
-
 import { fetchStories } from '../../apiCalls';
-import Nav from '../Nav/Nav';
-import Stories from '../Stories/Stories';
 import { NavLink } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
+import Nav from '../Nav/Nav';
+import Stories from '../Stories/Stories';
 import SingleStory from '../SingleStory/SingleStory';
 import TopStoryDetails from '../TopStoryDetails/TopStoryDetails';
 import './App.css';
@@ -31,10 +30,6 @@ const App = () => {
   useEffect(() => {
     getStories()
   }, [])
-
-  useEffect(() => {
-    console.log(stories)
-  }, [stories])
 
   return (
     <main>
