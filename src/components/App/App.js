@@ -45,7 +45,7 @@ const App = () => {
 
   return (
     <main>
-      <header className='App-header'>
+      <header className='App-header' onClick={() => submitSection('')}>
         <NavLink to='/' style={{ textDecoration: 'none', color: 'white' }}>
           <h1 className='header-title'>My News Reader</h1>
         </NavLink>
