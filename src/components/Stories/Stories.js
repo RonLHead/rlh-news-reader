@@ -48,8 +48,8 @@ const Stories = (props) => {
         />
       ) : (
         <div className='top-story-container'>
-          <h2 className='top-story-title'>Top Story</h2>
           <Link to='current_top_story' style={{ textDecoration: 'none', color: 'black' }}>
+            <h2 className='top-story-title'>Top Story</h2>
             <TopStory topStory={props.topStory}/>
           </Link>
           <GrayLine />

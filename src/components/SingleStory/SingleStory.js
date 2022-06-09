@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 const SingleStory = (props) => {
   const { id } = useParams();
   const story = props.story[id]
-  const tStory = props.topStory;
-  console.log(props.story)
+  const pubDate = story.published_date.split('').reverse().splice(15, 15).reverse();
+  const pubYear = pubDate.slice(0, 4).join('')
+  const pubMoDay = pubDate.slice(5, 10).join('')
 
   let storyDetails;
 
@@ -16,7 +17,7 @@ const SingleStory = (props) => {
       <div className="SingleStory-container">
         <h1 className="SingleStory-title">{story.title}</h1>
         <h2>{story.byline}</h2>
-        <p>{story.published_date}</p>
+        <p>{pubMoDay}-{pubYear}</p>
         <a href={story.url} target="_blank" rel="noopener noreferrer">
           <img className='SingleStory-img' alt={story.multimedia[0].caption} src={story.multimedia[0].url}/>
         </a>
