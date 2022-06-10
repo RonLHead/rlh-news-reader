@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const TopStoryDetails = (props) => {
   const tStory = props.topStory;
   const pubDate = tStory.published_date.split('').reverse().splice(15, 15).reverse();
-  const pubYear = pubDate.slice(0, 4).join('')
-  const pubMoDay = pubDate.slice(5, 10).join('')
+  const pubYear = pubDate.slice(0, 4).join('');
+  const pubMoDay = pubDate.slice(5, 10).join('');
   let tSDetails;
 
   if(!tStory) {
