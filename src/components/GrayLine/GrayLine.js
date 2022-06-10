@@ -6,7 +6,7 @@ const GrayLine = () => {
         border: 'none',
         borderRadius: '5px',
         height: 5,
-        width: '98vw',
+        width: '88vw',
       }}
     />
   )
