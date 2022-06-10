@@ -2,6 +2,11 @@
   font-family: 'Cabin', sans-serif;
 }
 
+main {
+  margin-right: 6%;
+}
+
+
 .App-header {
   background-color: #282c34;
   width: 100vw;
@@ -9,7 +14,8 @@
   flex-direction: column;
   font-size: calc(15px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   color: white;
-  padding-left: 1%;
+  position: sticky;
+  padding-left: 6%;
 }
 
 .header-title {
