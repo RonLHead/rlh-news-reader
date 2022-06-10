@@ -43,7 +43,7 @@ const Stories = (props) => {
   }
 
   return (
-    <section>
+    <section className='stories-wrapper'>
       {props.error}
       {props.isLoading ? (
         <ReactLoading 
