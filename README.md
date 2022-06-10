@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+![News Reader main page](https://user-images.githubusercontent.com/92322028/172988642-6caa78bf-e5e0-4672-90ba-41cb27ca7445.JPG)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## My News Reader serves as a platform for readers to access a current list of NYT articles. From this app, a reader can view article details, such as the its abstract and byline, and obtain a link to read the full story on the New York Time's website. This news reader also allows readers to filter stories based on subcategory.
 
-## Available Scripts
+### This application was created to submit as a Mod 4 take-home project for Turing School of Software & Design. 
+You can see it in action by visiting the [My News Reader](https://rlh-news-reader.surge.sh/) or on your local computer by following the instructions below. <br><br>
 
-In the project directory, you can run:
+### Useful Links!
+- [Deployed site](https://rlh-news-reader.surge.sh/)
+- [Wireframes on Figma](https://www.figma.com/file/USpu8q4tWvsvmnaCxpUelQ/rlh-news-reader-wireframe?node-id=0%3A1)
+- [Project spects](https://mod4.turing.edu/projects/take_home/take_home_fe)
+- [New York Times API Top Stories API](https://developer.nytimes.com/docs/top-stories-product/1/overview)
 
-### `npm start`
+* * *
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Goals
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Simulate a take-home task one mighty receive during an interview process
+- Create a news reader application that pulls articles from the [NYT Top Stories API](https://developer.nytimes.com/docs/top-stories-product/1/overview)
+- At minimum, the app should show:
+  - A list of articles
+  - A “detailed” view for each article
+  - Articles in the list must link to the detailed article view
+  - Filter feature
+- Demonstrate a strong understanding of React JS/Front End best practices
+- Prioritize project for MVP
 
-### `npm test`
+## How to Run
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repo down to your machine
+2. Open the root directory and rum `npm i` to install dependencies
+3. Run `npm start` to initialize the webpage
+4. Open the site by copying and pasting the server location `http://localhost:3000` in you address bar
 
-### `npm run build`
+* * *
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Development Process
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### As a visual learner with an associates in graphic design, I operate best when I can conceptualize how the project would look and operate. My News Reader began life as Figma wireframes to provide direction on how I want to structure my code and app functionality.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ç![My News Reader wireframes](https://user-images.githubusercontent.com/92322028/172990875-48993749-a3c6-4125-8260-f769c5670b51.JPG)
 
-### `npm run eject`
+* Please note I originally envisioned a bookmarking feature be included with this project. This was abandoned in order to meet the constraints of the MVP.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Next came the component tree structure:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Tree
+* [App](src/components/App)<br>
+--[Nav](src/components/Nav)<br>
+--[Stories](src/components/Stories)<br>
+  ---[TopStory](src/components/TopStory) ---[SingleStory](src/components/SingleStory) ---[Error](src/components/Error)  ---[GrayLine](src/components/GrayLine)<br>
+    -----[TopStoryDetails](src/components/TopStoryDetails)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* * *
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Features
 
-## Learn More
+**View Articles List:**
+On page load the user will see all the articles in the main New York Times subsection, which they can scroll up and down to view.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![news-reader-articles-list](https://user-images.githubusercontent.com/92322028/172993688-3902befd-2a95-452e-926e-1854a36f6604.gif)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**View Article Details:**
+The user can click on an article, and it will route them to a detailed view of the story.
 
-### Code Splitting
+![news-reader-article-details-view](https://user-images.githubusercontent.com/92322028/172994720-b32903d2-445d-4321-b4ae-62f5d59165af.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Go to NYT Article:**
+The user can click on various links to direct themselves to the actual New York Times article.
 
-### Analyzing the Bundle Size
+![news-reader-go-to-nyt](https://user-images.githubusercontent.com/92322028/172995525-b244ac0c-077c-4749-9d74-61612ae5536a.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Go Back:**
+From the article details view, the user can click the Go Back button in the nav bar to route back to the main page.
 
-### Making a Progressive Web App
+![news-reader-go-back](https://user-images.githubusercontent.com/92322028/172995058-66d2424c-dd39-4f92-8135-bf94d191c8d5.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Filter by Subsection:**
+The user can use the filter option to display articles based on the various subsections provided by NYT.
 
-### Advanced Configuration
+![news-reader-filter](https://user-images.githubusercontent.com/92322028/172995824-007c47f3-3a7f-47f3-8608-1a578b902cec.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* * * 
 
-### Deployment
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- JavaScript
+- React.js
+- React Hooks
+- React Router 6
+- HTML
+- CSS
+- Surge
+- V.S. Code
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Future Features
+
+- Ability to bookmark articles
+- View bookmarked articles
+- Remove bookmarked articles
+- Responsive CSS
+- End-to-End testing with Cypress
+
+# Contributor
+💻 Ron L Head |  [Github](https://github.com/RonLHead)  |  [LinkedIn](https://www.linkedin.com/in/ronlhead/)
+

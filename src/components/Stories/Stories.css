@@ -43,7 +43,8 @@
 }
 
 .SingleStory-container {
-  margin: 1%;
+  margin-top: 1%;
+  margin-left: 6%;
   display: flex;
   flex-direction: column;
   align-items: center;
