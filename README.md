@@ -8,7 +8,7 @@ You can see it in action by visiting the [My News Reader](https://rlh-news-reade
 ### Useful Links!
 - [Deployed site](https://rlh-news-reader.surge.sh/)
 - [Wireframes on Figma](https://www.figma.com/file/USpu8q4tWvsvmnaCxpUelQ/rlh-news-reader-wireframe?node-id=0%3A1)
-- [Project spects](https://mod4.turing.edu/projects/take_home/take_home_fe)
+- [Project specs](https://mod4.turing.edu/projects/take_home/take_home_fe)
 - [New York Times API Top Stories API](https://developer.nytimes.com/docs/top-stories-product/1/overview)
 
 * * *
