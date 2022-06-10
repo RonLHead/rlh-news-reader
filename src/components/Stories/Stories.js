@@ -7,7 +7,7 @@ import './Stories.css';
 
 const Stories = (props) => {
   let storiesList;
-  console.log("Top Story", props.topStory.multimedia)
+
   if(!props.stories.length) {
     storiesList = <h3>{props.error}</h3>
   } else {
@@ -38,12 +38,12 @@ const Stories = (props) => {
           )}
             <GrayLine />
           </section>
-      )
-    })
+      );
+    });
   }
 
   return (
-    <section>
+    <section className='stories-wrapper'>
       {props.error}
       {props.isLoading ? (
         <ReactLoading 

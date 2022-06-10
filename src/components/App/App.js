@@ -14,20 +14,17 @@ const App = () => {
   const [error, setError] = useState('');
   const [topStory, setTopStory] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [section, setSection] = useState('')
+  const [section, setSection] = useState('');
 
   const getStories = (section) => {
     if(!section) {
-      section='home'
+      section='home';
     }
     fetchStories(section)
       .then(data => {
-        console.log(data.results)
-        setTopStory(data.results.shift())
-        setStories(data.results)
-        setIsLoading(false)
-        console.log(topStory)
-        console.log(stories)
+        setTopStory(data.results.shift());
+        setStories(data.results);
+        setIsLoading(false);
       })
       .catch(err => 
         setError('Oops, something went wrong. Please try again later.')
@@ -35,12 +32,12 @@ const App = () => {
   }
 
   useEffect(() => {
-    getStories(section)
+    getStories(section);
   }, [])
 
   const submitSection = (section) => {
-    setSection(section)
-    getStories(section)
+    setSection(section);
+    getStories(section);
   }
 
   return (

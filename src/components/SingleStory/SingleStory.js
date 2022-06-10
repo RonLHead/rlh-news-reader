@@ -39,4 +39,4 @@ const SingleStory = (props) => {
   )
 }
 
-export default SingleStory
+export default SingleStory;

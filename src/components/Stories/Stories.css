@@ -1,3 +1,7 @@
+.stories-wrapper {
+  margin-left: 5%;
+}
+
 .top-story-title {
   color: #19B697;
   margin-left: 1%;
@@ -18,7 +22,7 @@
 }
 
 .storiesList-info-container {
-  width: 80%
+  width: 80%;
 }
 
 .story-title {
